@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/*选择所有元素*/
+*{
+  box-sizing:border-box;
+}
+/*弹性布局，每个div在轴上居中，每个div标签居中*/
+body{
+  font-family:'Muli',sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  height:100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+/*vw即view width*/
+.container{
+  display: flex;
+  width: 90vw;
+}
+
+/*让所有div有相同长度0.5，相对位置是相对原始位置进行移动,-webkit-trainsition来设置变化的属性*/
+.panel{
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  height:80vh;
+  border-radius:50px;
+  color:#fff;
+  cursor:pointer;
+  flex:0.5;
+  margin:10px;
+  position: relative;
+  -webkit-transition:all 700ms ease-in;
+}
+/*对所有的panel且h3的进行样式修改*/
+.panel h3{
+  font-size:24px;
+  position: absolute;
+  bottom:20px;
+  left:20px;
+  margin:0;
+  opacity:0;
+}
+/*对包含panel属性元素中包含active的进行修改*/
+.panel.active{
+  flex:5;
+}
+/*对文字透明度进行过渡，花费0.3s，0.4s时开始*/
+.panel.active h3{
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+/*定义最大宽度，调整网页大小会导致显示内容的变化*/
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+  /*选择panel属性的元素，让第四和第五个隐藏*/
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
+
